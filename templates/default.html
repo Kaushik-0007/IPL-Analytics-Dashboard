@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Analytics Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/default.css')}}">
+    <!-- Add any other styling or scripts you may need -->
+</head>
+<body>
+    <div class="landing-container">
+        <h1 class="landing-title">IPL Analytics Dashboard</h1>
+        <p>Total Number of Users : {{ user_count }}</p>
+        <div class="button-container">
+            <a href="{{url_for('register')}}" class="landing-button">Register</a>
+            <a href="{{url_for('login')}}" class="landing-button">Login</a>
+        </div>
+    </div>
+</body>
+</html>

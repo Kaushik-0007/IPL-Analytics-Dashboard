@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>IPL Analytics Dashboard Admin Page</h1>
+        <h2>Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Create User</h2>
+        <form id="insertForm">
+            <label for="newUsername">Username:</label>
+            <input type="text" name="newUsername" required><br>
+            <label for="newPassword">Password:</label>
+            <input type="password" name="newPassword" required><br>
+            <button type="button" onclick="insertUser()">Insert User</button>
+        </form>
+
+        <h2>Update User</h2>
+        <form id="updateForm">
+            <label for="updateUserId">User ID to Update:</label>
+            <input type="text" name="updateUserId" required><br>
+            <label for="updateUsername">New Username:</label>
+            <input type="text" name="updateUsername" required><br>
+            <label for="updatePassword">New Password:</label>
+            <input type="password" name="updatePassword" required><br>
+            <button type="button" onclick="updateUser()">Update User</button>
+        </form>
+
+        <h2>Delete User</h2>
+        <form id="deleteForm">
+            <label for="deleteUserId">User ID to Delete:</label>
+            <input type="text" name="deleteUserId" required><br>
+            <button type="button" onclick="deleteUser()">Delete User</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function insertUser() {
+            var formData = new FormData(document.getElementById('insertForm'));
+            $.ajax({
+                type: 'POST',
+                url: '/insert_user',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert(response.message);
+                    window.location.reload();
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseJSON.message);
+                }
+            });
+        }
+
+        function updateUser() {
+            var formData = new FormData(document.getElementById('updateForm'));
+            $.ajax({
+                type: 'POST',
+                url: '/update_user',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert(response.message);
+                    window.location.reload();
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseJSON.message);
+                }
+            });
+        }
+
+        function deleteUser() {
+            var formData = new FormData(document.getElementById('deleteForm'));
+            $.ajax({
+                type: 'POST',
+                url: '/delete_user',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert(response.message);
+                    window.location.reload();
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseJSON.message);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+

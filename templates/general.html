@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Analytics</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">IPL Analytics Dashboard</h1>
+
+        <div class="query-box">
+            <h3>Top 10 Leading Run Scorers in IPL</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1698130570381&to=1698152170381&panelId=2" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data1">Generate Runs</button>
+            <ul class="results-list" id="data1" style="display: none;">
+                {% if data1 %}
+                    {% for item in data1 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Top 10 Leading Wicket Takers in IPL</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1698145955500&to=1698167555500&panelId=3" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data2">Generate Wickets</button>
+            <ul class="results-list" id="data2" style="display: none;">
+                {% if data2 %}
+                    {% for item in data2 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Matches Per Season in IPL</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1698147985612&to=1698169585612&panelId=4" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data3">Generate Matches</button>
+            <ul class="results-list" id="data3" style="display: none;">
+                {% if data3 %}
+                    {% for item in data3 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Number of Dismissals per Dismissal Mode</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1698072883259&to=1698245683259&panelId=5" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data4">Generate Result</button>
+            <ul class="results-list" id="data4" style="display: none;">
+                {% if data4 %}
+                    {% for item in data4 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Top 10 Run Scorers in a Particular Season</h3>
+            <form method="post" action="{{ url_for('general') }}">
+                <label for="batterinputYear">Enter Year:</label>
+                <input type="text" name="batterinputYear" required>
+                <br>
+                <br>
+            </form>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1700123361669&to=1700144961669&panelId=15" width="800" height="300" frameborder="0"></iframe>
+            </div>
+
+            <h3>Top 10 Wicket Takers in a Particular Season</h3>
+            <form method="post" action="{{ url_for('general') }}">
+                <label for="bowlerinputYear">Enter Year:</label>
+                <input type="text" name="bowlerinputYear" required>
+                <br>
+                <br>
+            </form>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1700136968272&to=1700158568272&panelId=16" width="800" height="300" frameborder="0"></iframe>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Handle button click to show/hide result sections
+            $('.result-button').click(function () {
+                var target = $(this).data('target');
+                $('#' + target).toggle(); // Toggle visibility of the result section
+            });
+        });
+    </script>
+</body>
+</html>
+
+

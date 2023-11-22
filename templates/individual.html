@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Analytics</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">IPL Analytics Dashboard</h1>
+
+        <div class="query-box">
+            <h3>Highest Run-Scorer Each Season</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699096188604&to=1699117788604&panelId=10" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data1">Generate Stats</button>
+            <ul class="results-list" id="data1" style="display: none;">
+                {% if data1 %}
+                    {% for item in data1 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Highest Wicket-Taker Each Season</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699096957239&to=1699118557239&panelId=11" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data2">Generate Stats</button>
+            <ul class="results-list" id="data2" style="display: none;">
+                {% if data2 %}
+                    {% for item in data2 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Most Runs in Winning Cause</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699100268026&to=1699121868026&panelId=12" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data3">Generate Stats</button>
+            <ul class="results-list" id="data3" style="display: none;">
+                {% if data3 %}
+                    {% for item in data3 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Most Wickets in Winning Cause</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699100247380&to=1699121847380&panelId=13" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data4">Generate Stats</button>
+            <ul class="results-list" id="data4" style="display: none;">
+                {% if data4 %}
+                    {% for item in data4 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Handle button click to show/hide result sections
+            $('.result-button').click(function () {
+                var target = $(this).data('target');
+                $('#' + target).toggle(); // Toggle visibility of the result section
+            });
+        });
+    </script>
+</body>
+</html>

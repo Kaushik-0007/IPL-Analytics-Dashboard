@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Analytics Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">IPL Analytics Dashboard</h1>
+        <div class="welcome-message">Welcome, {{ username }}</div>
+        <div style="float: right; margin-top: -50px; margin-right: 0px;">
+            <a href="{{ url_for('logout', username=username) }}" class="logout-link">Logout</a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Navigate to:</button>
+            <div class="dropdown-content">
+                {% if username == 'admin' %}
+                    <a href="{{ url_for('admin') }}">Admin</a>
+                {% endif %}
+                <a href="{{ url_for('general',username=username) }}">General</a>
+                <a href="{{ url_for('individual',username=username)}}">Individual</a> 
+                <a href="{{ url_for('team',username=username)}}">Team</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

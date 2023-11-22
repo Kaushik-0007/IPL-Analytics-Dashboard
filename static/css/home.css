@@ -1,0 +1,93 @@
+body {
+    font-family: 'Arial', sans-serif;
+     /* Add your cricket background image */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjusts the background image size */
+    background-color: #292b2c; /* Dark gray background */
+    margin: 0;
+    padding: 0;
+    color: #fff; /* Text color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    color: #FF5722; /* Orange color */
+    margin-top: 0;
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Letter spacing */
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #333; /* Text shadow */
+}
+
+/* New styles for the welcome message */
+.welcome-message {
+    font-size: 24px;
+    margin-top: 20px;
+    color: green; /* Blue color */
+}
+
+/* Dropdown menu styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.dropbtn {
+    background-color: #3498db; /* Blue background color */
+    color: #fff;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Light gray on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logout-link {
+    font-size: 20px;
+    color: purple;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}

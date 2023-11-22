@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Analytics</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">IPL Analytics Dashboard</h1>
+
+        <div class="query-box">
+            <h3>Total Matches Played By Each Team</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699080710233&to=1699102310233&panelId=7" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data1">Generate Teams</button>
+            <ul class="results-list" id="data1" style="display: none;">
+                {% if data1 %}
+                    {% for item in data1 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Teams with Most Wins</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699078132096&to=1699099732097&panelId=6" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data2">Generate Teams</button>
+            <ul class="results-list" id="data2" style="display: none;">
+                {% if data2 %}
+                    {% for item in data2 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Teams with the Most Matches Played at Neutral Venues</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699083140334&to=1699104740334&panelId=8" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data3">Generate Teams</button>
+            <ul class="results-list" id="data3" style="display: none;">
+                {% if data3 %}
+                    {% for item in data3 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Total Boundaries (4s and 6s) Hit by Each Team</h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699086604796&to=1699108204796&panelId=9" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data4">Generate Teams</button>
+            <ul class="results-list" id="data4" style="display: none;">
+                {% if data4 %}
+                    {% for item in data4 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+
+            <h3>Teams Win Percentage </h3>
+            <div class="iframe-container">
+                <iframe src="http://10.30.204.58:3000/d-solo/b2e46cc3-33cf-4dc4-8b78-34ed97f806c5/ipl?orgId=1&from=1699970113764&to=1699991713764&panelId=14" width="800" height="300" frameborder="0"></iframe>
+            </div>
+            <button class="result-button" data-target="data5">Generate Teams</button>
+            <ul class="results-list" id="data5" style="display: none;"> <!-- Change data4 to data5 here -->
+                {% if data5 %}
+                    {% for item in data5 %}
+                        <li class="result-item">{{ item }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Handle button click to show/hide result sections
+            $('.result-button').click(function () {
+                var target = $(this).data('target');
+                $('#' + target).toggle(); // Toggle visibility of the result section
+            });
+        });
+    </script>
+</body>
+</html>
